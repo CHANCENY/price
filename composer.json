@@ -1,0 +1,21 @@
+{
+    "name": "simp/price",
+    "description": "This is php package that works with numerical values as amount of entity",
+    "type": "library",
+    "require-dev": {
+        "symfony/var-dumper": "^8.1",
+        "phpunit/phpunit": "^13.4"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Simp\\Price\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Chance Nyasulu",
+            "email": "nyasuluchance6@gmail.com"
+        }
+    ]
+}

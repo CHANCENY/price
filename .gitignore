@@ -1,0 +1,6 @@
+/vendor/
+/src/rates/exchange-ratings.json
+.phpunit.cache/
+.phpunit.result.cache
+/.phpunit.cache/
+/coverage/
