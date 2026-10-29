@@ -925,8 +925,6 @@ class Formatter
 
     private array $currency = [];
 
-    private string $currencyCode = '';
-
     /**
      * Creates a formatter using the configured rules for a currency code.
      *
@@ -934,7 +932,6 @@ class Formatter
      */
     public function __construct(string $currency_code)
     {
-        $this->currencyCode = $currency_code;
         foreach (self::$formatters as $formatter) {
             if (strtolower($formatter['currency_code']) === strtolower($currency_code)) {
                 $this->currency = $formatter;

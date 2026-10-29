@@ -40,7 +40,7 @@ class Convertor
             top:
             $content_json = json_decode(file_get_contents($cached_file), true);
             if (empty($content_json)) {
-                self::downloadExchangeRates($cached_file, $base_currency_code);
+                $this->downloadExchangeRates($cached_file, $base_currency_code);
                 $count += 1;
 
                 if ($count > 2) {
@@ -55,7 +55,7 @@ class Convertor
 
             // check if cached is of today
             if ($date_of_cached_rating->diff($now)->days > 0) {
-                self::downloadExchangeRates($cached_file, $base_currency_code);
+                $this->downloadExchangeRates($cached_file, $base_currency_code);
                 $count += 1;
 
                 if ($count > 2) {
@@ -77,7 +77,7 @@ class Convertor
      * @param string $cached_file        Path to the cache file to write.
      * @param string $base_currency_code ISO currency code to use as the rate base.
      */
-    private static function downloadExchangeRates(string $cached_file, string $base_currency_code)
+    private function downloadExchangeRates(string $cached_file, string $base_currency_code)
     {
         $curl = curl_init(self::$exchange_rates_source . http_build_query(['base' => $base_currency_code]));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -138,8 +138,7 @@ class Convertor
      */
     public function getExchangeRate(string $qoute_currency): array
     {
-        $qoute_currency_rate = self::$exchange_rates[$qoute_currency] ?? [];
-        return $qoute_currency_rate;
+        return self::$exchange_rates[$qoute_currency] ?? [];
     }
 
     /**

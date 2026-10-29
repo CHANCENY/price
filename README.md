@@ -237,6 +237,22 @@ vendor/bin/phpunit
 Conversion tests use controlled in-memory exchange rates; they do not depend on
 the live API.
 
+## Rector
+
+Rector is configured in `rector.php` for the package source and tests, targeting
+PHP 8.5 with dead-code and code-quality rules enabled. Preview proposed changes
+without modifying files:
+
+```sh
+composer rector:check
+```
+
+Apply the configured refactorings with:
+
+```sh
+composer rector
+```
+
 ## License
 
 This package is published under the MIT license.
