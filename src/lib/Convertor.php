@@ -79,7 +79,7 @@ class Convertor
      */
     private function downloadExchangeRates(string $cached_file, string $base_currency_code)
     {
-        $curl = curl_init(self::$exchange_rates_source . http_build_query(['base' => $base_currency_code]));
+        $curl = curl_init(self::$exchange_rates_source . '?' . http_build_query(['base' => $base_currency_code]));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($curl);
         $json = json_decode($response, true);
