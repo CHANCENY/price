@@ -987,7 +987,7 @@ class Currency
 
         $this->currency_group = self::$currencies[$group] ?? [];
 
-        foreach ($this->currency_group as $region => $currencies) {
+        foreach ($this->currency_group as $currencies) {
             if ($group === "currencies_by_region") {
 
                 foreach ($currencies as $currency) {
@@ -1006,7 +1006,7 @@ class Currency
 
         }
 
-        if (empty($this->currency)) {
+        if ($this->currency === []) {
             throw new CurrencyNotFoundException($currency_code);
         }
     }
@@ -1024,18 +1024,13 @@ class Currency
      * Returns the currencies in the selected group.
      *
      * Regional currencies are grouped by region; cryptocurrencies are a flat list.
-     *
-     * @return array
      */
-
     public function getCurrencyGroup(): array
     {
         return $this->currency_group;
     }
     /**
      * Returns the selected currency's code.
-     *
-     * @return string
      */
     public function getCode(): string
     {
@@ -1043,8 +1038,6 @@ class Currency
     }
     /**
      * Returns the selected currency's symbol.
-     *
-     * @return string
      */
     public function getSymbol(): string
     {
@@ -1052,8 +1045,6 @@ class Currency
     }
     /**
      * Returns the selected currency's name.
-     *
-     * @return string
      */
     public function getName(): string
     {
@@ -1063,8 +1054,6 @@ class Currency
      * Returns the selected currency's country.
      *
      * The selected entry must define a country; cryptocurrency entries do not.
-     *
-     * @return string
      */
     public function getCountry(): string
     {

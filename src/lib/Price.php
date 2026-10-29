@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of simp/price library published with MIT license.
  */
-
 namespace Simp\Price\lib;
 
 use Simp\Price\Exception\DivisionByZeroException;
@@ -150,8 +151,6 @@ class Price
 
         throw new DivisionByZeroException("$this->adjustable_number / {$amount}");
 
-        return $this;
-
     }
 
     /**
@@ -207,10 +206,7 @@ class Price
      */
     public function isDivisibleBy(float|Price $amount): bool
     {
-        if ($this->adjustable_number % ((float) (string) $amount) == 0){
-            return true;
-        }
-        return false;
+        return $this->adjustable_number % (float) (string) $amount === 0;
     }
 
     /**
