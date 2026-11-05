@@ -49,21 +49,6 @@ class Convertor
                 goto top;
             }
 
-            $first_entry = array_first($content_json);
-            $date_of_cached_rating = new DateTime($first_entry['date']);
-            $now = new DateTime("now");
-
-            // check if cached is of today
-            if ($date_of_cached_rating->diff($now)->days > 0) {
-                $this->downloadExchangeRates($cached_file, $base_currency_code);
-                $count += 1;
-
-                if ($count > 2) {
-                    throw new FailedExchangeRateDownloadException(self::$exchange_rates_source);
-                }
-                goto top;
-            }
-
             foreach ($content_json as $entry) {
                 self::$exchange_rates[$entry['quote']] = $entry;
             }
