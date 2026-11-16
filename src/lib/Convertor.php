@@ -27,7 +27,7 @@ class Convertor
     {
         // Look for date cached excahnge rates first if not exist download them.
         $cached_file = __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "rates" . DIRECTORY_SEPARATOR .
-            "exchange-ratings.json";
+            "[$base_currency_code]exchange-ratings.json";
         if (!file_exists($cached_file)) {
             @mkdir(dirname($cached_file), recursive: true);
             @touch($cached_file);
